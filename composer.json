@@ -1,0 +1,12 @@
+{
+    "name": "vouss/hiroth",
+    "description": "The hero fight simulator.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marcin Bos",
+            "email": "marcin@mbosweb.pl"
+        }
+    ],
+    "require": {}
+}
