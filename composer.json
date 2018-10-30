@@ -8,7 +8,9 @@
             "email": "marcin@mbosweb.pl"
         }
     ],
-    "require": {},
+    "require": {
+      "php": "^7.1"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
