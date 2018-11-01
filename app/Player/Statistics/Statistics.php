@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Player\Statistics;
 
-use App\Player\Helpers\Value;
-
 /**
  * Class Statistics
  * @package App\Player\Statistics
@@ -53,13 +51,20 @@ class Statistics implements StatisticsInterface
         $this->luck = $luck;
     }
 
-
     /**
      * @return int
      */
     public function getHealth(): int
     {
         return $this->health;
+    }
+
+    /**
+     * @param int $health
+     */
+    public function setHealth(int $health): void
+    {
+        $this->health = $health;
     }
 
     /**

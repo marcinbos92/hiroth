@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Player\Helpers;
+namespace App\Helpers;
 
 /**
  * Class Value

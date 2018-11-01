@@ -15,6 +15,11 @@ interface StatisticsInterface
     public function getHealth(): int;
 
     /**
+     * @param int $health
+     */
+    public function setHealth(int $health): void;
+
+    /**
      * @return int
      */
     public function getStrength(): int;

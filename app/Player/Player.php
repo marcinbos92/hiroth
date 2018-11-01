@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Player;
 
-use App\Player\Statistics\Statistics;
+use App\Player\Statistics\StatisticsInterface;
 
 /**
  * Class Player
@@ -35,10 +35,10 @@ class Player implements PlayerInterface
      * Player constructor.
      * @param string $name
      * @param string $type
-     * @param Statistics $statistics
+     * @param StatisticsInterface $statistics
      * @param $skills
      */
-    public function __construct(string $name, string $type, Statistics $statistics, $skills)
+    public function __construct(string $name, string $type, StatisticsInterface $statistics, $skills)
     {
         $this->name = $name;
         $this->type = $type;
@@ -63,9 +63,9 @@ class Player implements PlayerInterface
     }
 
     /**
-     * @return Statistics
+     * @return StatisticsInterface
      */
-    public function getStatistics(): Statistics
+    public function getStatistics(): StatisticsInterface
     {
         return $this->statistics;
     }
@@ -76,5 +76,10 @@ class Player implements PlayerInterface
     public function getSkills(): iterable
     {
         return $this->skills;
+    }
+
+    public function subtractHealth(int $value): void
+    {
+        $this->statistics->setHealth($this->statistics->getHealth() - $value);
     }
 }

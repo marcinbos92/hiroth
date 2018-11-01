@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Player;
 
-use App\Player\Statistics\Statistics;
+use App\Player\Statistics\StatisticsInterface;
 
 /**
  * Interface PlayerInterface
@@ -22,12 +22,14 @@ interface PlayerInterface
     public function getType(): string ;
 
     /**
-     * @return Statistics
+     * @return StatisticsInterface
      */
-    public function getStatistics(): Statistics;
+    public function getStatistics(): StatisticsInterface;
 
     /**
      * @return iterable
      */
     public function getSkills(): iterable;
+
+    public function subtractHealth(int $value): void;
 }
