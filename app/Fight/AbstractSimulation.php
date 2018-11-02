@@ -41,7 +41,14 @@ abstract class AbstractSimulation
 
     protected function getWinner(): string
     {
-        return $this->firstPlayer->getStatistics()->getHealth() < 0 ? $this->secondPlayer->getName() : $this->firstPlayer->getName();
+        $firstPlayerHealth = $this->firstPlayer->getStatistics()->getHealth();
+        $secondPlayerHealth = $this->secondPlayer->getStatistics()->getHealth();
+
+        if ($firstPlayerHealth && $secondPlayerHealth) {
+            return $firstPlayerHealth > $secondPlayerHealth ? $this->firstPlayer->getName() : $this->secondPlayer->getName();
+        }
+
+        return $firstPlayerHealth < 0 ? $this->secondPlayer->getName() : $this->firstPlayer->getName();
     }
 
     protected function swap(): void

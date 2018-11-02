@@ -23,7 +23,7 @@ abstract class AbstractFightView
 
     public function displayRound(int $number): string
     {
-        return \sprintf("\n[Round %d]\n", $number);
+        return \sprintf("\n-----[Round %d]------------------------------------------------------------------------>>>\n", $number);
     }
 
     public function displayHitInfo(int $value): string
