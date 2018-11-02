@@ -35,4 +35,9 @@ abstract class AbstractFightView
     {
         return \sprintf("\nThe winner is... %s !!!", $name);
     }
+
+    public function displaySkillUsage(string $name): string
+    {
+        return \sprintf("\n ******** Used %s ********", $name);
+    }
 }

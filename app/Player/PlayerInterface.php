@@ -19,7 +19,7 @@ interface PlayerInterface
     /**
      * @return string
      */
-    public function getType(): string ;
+    public function getType(): string;
 
     /**
      * @return StatisticsInterface

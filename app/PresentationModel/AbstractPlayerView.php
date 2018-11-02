@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\PresentationModel;
 
 use App\Player\PlayerInterface;
+use App\Player\Skills\AbstractSkill;
 
 abstract class AbstractPlayerView
 {
@@ -36,7 +37,6 @@ abstract class AbstractPlayerView
     public function displayStatistics(): string
     {
         $stats = $this->player->getStatistics();
-
         return \sprintf(
             "H:%3.3d | ST:%3.3d | D:%3.3d | SP:%3.3d | L:%3.3d",
             $stats->getHealth(),
@@ -45,6 +45,23 @@ abstract class AbstractPlayerView
             $stats->getSpeed(),
             $stats->getLuck()
         );
+    }
+
+    /**
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function displaySkills(): string
+    {
+        $skillsString = 'Skills: ';
+        /**
+         * @var $skill AbstractSkill
+         */
+        foreach ($this->player->getSkills() as $skill) {
+            $skillsString .= $skill->getName() . ' | ';
+        }
+
+        return $skillsString;
     }
 
 }

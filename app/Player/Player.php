@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Player;
 
+use App\Player\Skills\AbstractSkill;
 use App\Player\Statistics\StatisticsInterface;
 
 /**
@@ -22,12 +23,12 @@ class Player implements PlayerInterface
     private $type;
 
     /**
-     * @var
+     * @var StatisticsInterface
      */
     private $statistics;
 
     /**
-     * @var
+     * @var AbstractSkill[]
      */
     private $skills;
 
@@ -36,9 +37,9 @@ class Player implements PlayerInterface
      * @param string $name
      * @param string $type
      * @param StatisticsInterface $statistics
-     * @param $skills
+     * @param AbstractSkill[] $skills
      */
-    public function __construct(string $name, string $type, StatisticsInterface $statistics, $skills)
+    public function __construct(string $name, string $type, StatisticsInterface $statistics, array $skills)
     {
         $this->name = $name;
         $this->type = $type;

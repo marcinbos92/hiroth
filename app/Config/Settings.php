@@ -2,11 +2,27 @@
 
 namespace App\Config;
 
-class Settings {
+class Settings
+{
+    /**
+     * @var int
+     */
+    private $turnsLimit;
+
     /**
      * Settings constructor.
+     * @param int $turnsLimit
      */
-    public function __construct()
+    public function __construct(int $turnsLimit)
     {
+        $this->turnsLimit = $turnsLimit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTurnsLimit(): int
+    {
+        return $this->turnsLimit;
     }
 }

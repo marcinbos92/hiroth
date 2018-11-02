@@ -15,12 +15,9 @@ class FightSimulation extends AbstractSimulation
         $this->setPlayersOrder();
         echo $this->presentationModel->getFightView()->displayFightStarted();
 
-        //move to config
-        $turnsLimit = 20;
-
         $turns = 0;
         while (
-            $turns < $turnsLimit &&
+            $turns < $this->settings->getTurnsLimit() &&
             $this->firstPlayer->getStatistics()->getHealth() > 0 &&
             $this->secondPlayer->getStatistics()->getHealth() > 0
         ) {
