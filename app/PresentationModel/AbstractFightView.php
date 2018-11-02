@@ -40,4 +40,9 @@ abstract class AbstractFightView
     {
         return \sprintf("\n ******** Used %s ********", $name);
     }
+
+    public function displayMissedAction(): string
+    {
+        return \sprintf("\n >>> Attack missed! <<<\n");
+    }
 }

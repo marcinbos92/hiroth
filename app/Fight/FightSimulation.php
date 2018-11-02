@@ -58,6 +58,15 @@ class FightSimulation extends AbstractSimulation
             }
         }
 
+        if (Type::beast() === $this->secondPlayer->getType()) {
+            if (1 === $this->getLuckyNumberForDefender()) {
+                echo $this->presentationModel->getFightView()->displayMissedAction();
+                $damage = 0;
+            }
+        }
+
+
+
         $this->secondPlayer->subtractHealth($damage);
 
         echo $this->presentationModel->getFightView()->displayHitInfo($damage);
