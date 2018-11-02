@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Fight;
 
+use App\Player\Type;
 
 class FightSimulation extends AbstractSimulation
 {
