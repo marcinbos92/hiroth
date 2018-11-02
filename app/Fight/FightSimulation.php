@@ -35,4 +35,30 @@ class FightSimulation extends AbstractSimulation
 
         echo $this->presentationModel->getFightView()->displayWinner($this->getWinner());
     }
+
+    protected function duel(): void
+    {
+        $damage = $this->firstPlayer->getStatistics()->getStrength() - $this->secondPlayer->getStatistics()->getDefence();
+
+        if (Type::human() === $this->firstPlayer->getType()) {
+            if (1 === $this->getLuckyNumberForAttacker()) {
+                $randomSkill = $this->getRandomSkill($this->obtainAttackSkills());
+                echo $this->presentationModel->getFightView()->displaySkillUsage($randomSkill->getName());
+                $damage = $randomSkill->use($damage);
+            }
+
+        }
+
+        if (Type::human() === $this->secondPlayer->getType()) {
+            if (1 === $this->getLuckyNumberForDefender()) {
+                $randomSkill = $this->getRandomSkill($this->obtainDefenceSkills());
+                echo $this->presentationModel->getFightView()->displaySkillUsage($randomSkill->getName());
+                $damage = $randomSkill->use($damage);
+            }
+        }
+
+        $this->secondPlayer->subtractHealth($damage);
+
+        echo $this->presentationModel->getFightView()->displayHitInfo($damage);
+    }
 }

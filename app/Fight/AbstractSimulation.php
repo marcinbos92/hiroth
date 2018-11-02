@@ -71,48 +71,23 @@ abstract class AbstractSimulation
         list($this->firstPlayer, $this->secondPlayer) = [$this->secondPlayer, $this->firstPlayer];
     }
 
-    protected function duel(): void
-    {
-        $damage = $this->firstPlayer->getStatistics()->getStrength() - $this->secondPlayer->getStatistics()->getDefence();
 
-        if (Type::human() === $this->firstPlayer->getType()) {
-            if (1 === $this->getLuckyNumberForAttacker()) {
-                $randomSkill = $this->getRandomSkill($this->obtainAttackSkills());
-                echo $this->presentationModel->getFightView()->displaySkillUsage($randomSkill->getName());
-                $damage = $randomSkill->use($damage);
-            }
-
-        }
-
-        if (Type::human() === $this->secondPlayer->getType()) {
-            if (1 === $this->getLuckyNumberForDefender()) {
-                $randomSkill = $this->getRandomSkill($this->obtainDefenceSkills());
-                echo $this->presentationModel->getFightView()->displaySkillUsage($randomSkill->getName());
-                $damage = $randomSkill->use($damage);
-            }
-        }
-
-        $this->secondPlayer->subtractHealth($damage);
-
-        echo $this->presentationModel->getFightView()->displayHitInfo($damage);
-    }
-
-    private function getLuckyNumberForAttacker(): int
+    protected function getLuckyNumberForAttacker(): int
     {
         return mt_rand(1, (int)((1/$this->firstPlayer->getStatistics()->getLuck()) * 100));
     }
 
-    private function getLuckyNumberForDefender(): int
+    protected function getLuckyNumberForDefender(): int
     {
         return mt_rand(1, (int)((1/$this->secondPlayer->getStatistics()->getLuck()) * 100));
     }
 
-    private function getRandomSkill(array $skills): AbstractSkill
+    protected function getRandomSkill(array $skills): AbstractSkill
     {
         return $skills[\array_rand($skills)];
     }
 
-    private function obtainAttackSkills(): array
+    protected function obtainAttackSkills(): array
     {
         return \array_filter( $this->firstPlayer->getSkills(), function (AbstractSkill $skill) {
             if (AbstractSkill::ATTACK === $skill->getType()) {
@@ -121,7 +96,7 @@ abstract class AbstractSimulation
         });
     }
 
-    private function obtainDefenceSkills(): array
+    protected function obtainDefenceSkills(): array
     {
         return \array_filter($this->secondPlayer->getSkills(), function (AbstractSkill $skill) {
             if (AbstractSkill::DEFENSE === $skill->getType()) {
