@@ -28,7 +28,7 @@ class FightSimulation extends AbstractSimulation
             $this->duel();
             echo $this->presentationModel->getPlayerView($this->firstPlayer)->display(self::ATTACKER);
             echo $this->presentationModel->getPlayerView($this->secondPlayer)->display(self::DEFENDER);
-
+            echo $this->presentationModel->getFightView()->displayRound($turns + 1);
             $turns++;
             $this->swap();
         }

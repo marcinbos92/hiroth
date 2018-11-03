@@ -38,3 +38,4 @@ try {
 $fight = new FightSimulation($playerOne, $playerTwo, new PresentationModel(), new Settings(20));
 
 $fight->start();
+exit;

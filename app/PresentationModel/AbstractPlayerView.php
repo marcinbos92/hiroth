@@ -53,15 +53,15 @@ abstract class AbstractPlayerView
      */
     public function displaySkills(): string
     {
-        $skillsString = 'Skills: ';
+        $skillsString = '[ ';
         /**
          * @var $skill AbstractSkill
          */
         foreach ($this->player->getSkills() as $skill) {
-            $skillsString .= $skill->getName() . ' | ';
+            $skillsString .= $skill->getName() . ' ';
         }
 
-        return $skillsString;
+        return $skillsString . ']';
     }
 
 }
